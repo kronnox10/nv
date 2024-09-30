@@ -1,7 +1,7 @@
 import mysql.connector
 from fastapi import HTTPException
-from config.db_config import get_db_connection
-from models.pago_model import Pago
+from app.config.db_config import get_db_connection
+from app.models.pago_model import Pago
 from fastapi.encoders import jsonable_encoder
 
 class payController:

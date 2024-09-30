@@ -1,7 +1,7 @@
 import mysql.connector
 from fastapi import HTTPException
-from config.db_config import get_db_connection
-from models.atributo_model import Atributo
+from app.config.db_config import get_db_connection
+from app.models.atributo_model import Atributo
 from fastapi.encoders import jsonable_encoder
 
 class AtributoController:

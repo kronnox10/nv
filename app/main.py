@@ -1,10 +1,10 @@
 from fastapi import FastAPI
-from routes.user_routes import router as user_router
-from routes.rol_routes import router as Rol_router
-from routes.atributo_routes import router as atributo_router
-from routes.atributoxusuario_routes import router as atrixuser_router
-from routes.pago_routes import router as Pago_router
-from routes.Transacciones_routes import router as Transaccion_router
+from app.routes.user_routes import router as user_router
+from app.routes.rol_routes import router as Rol_router
+from app.routes.atributo_routes import router as atributo_router
+from app.routes.atributoxusuario_routes import router as atrixuser_router
+from app.routes.pago_routes import router as Pago_router
+from app.routes.Transacciones_routes import router as Transaccion_router
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()

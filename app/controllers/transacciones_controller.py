@@ -1,7 +1,7 @@
 import mysql.connector
 from fastapi import HTTPException
-from config.db_config import get_db_connection
-from models.transacciones_model import Transacciones
+from app.config.db_config import get_db_connection
+from app.models.transacciones_model import Transacciones
 from fastapi.encoders import jsonable_encoder
 
 class TravesanoController:

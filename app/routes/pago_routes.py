@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from controllers.pago_controller import *
-from models.pago_model import Pago
+from app.controllers.pago_controller import *
+from app.models.pago_model import Pago
 
 router = APIRouter()
 

@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from controllers.rol_controller import *
-from models.rol_model import Rol
+from app.controllers.rol_controller import *
+from app.models.rol_model import Rol
 
 router = APIRouter()
 

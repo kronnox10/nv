@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from controllers.transacciones_controller import *
-from models.transacciones_model import Transacciones
+from app.controllers.transacciones_controller import *
+from app.models.transacciones_model import Transacciones
 
 router = APIRouter()
 
