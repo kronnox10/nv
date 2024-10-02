@@ -1,8 +1,10 @@
 import mysql.connector
-from fastapi import HTTPException
+from fastapi import HTTPException, UploadFile
+import pandas as pd
 from app.config.db_config import get_db_connection
 from app.models.atributo_model import Atributo
 from fastapi.encoders import jsonable_encoder
+
 
 class AtributoController:
         
@@ -18,7 +20,29 @@ class AtributoController:
             conn.rollback()
         finally:
             conn.close()
-        
+
+    def create_atributo_masivo(file: UploadFile):
+        try:
+            # Leer el archivo Excel
+            contents = file.file.read()
+            df = pd.read_excel(contents, engine='openpyxl')
+               # Conectar a la base de datos
+            conn = get_db_connection()
+            cursor = conn.cursor()
+
+            for index, row in df.iterrows():
+                cursor.execute(
+                    "INSERT INTO atributo (nombre, descripcion, estado) VALUES (%s, %s, %s)",
+                    (row['nombre'], row['descripcion'], row['estado'])
+                )
+                conn.commit()
+            return {"resultado": "Atributos creados exitosamente"}
+        except mysql.connector.Error as err:
+            conn.rollback()
+            return {"error": str(err)}
+        finally:
+            conn.close()
+       
 
     def get_atributo(self, atributo_id: int):
         try:

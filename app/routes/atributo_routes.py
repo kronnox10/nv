@@ -1,6 +1,8 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, UploadFile, File, Depends
 from app.controllers.atributo_controller import *
 from app.models.atributo_model import Atributo
+from fastapi.encoders import JSONResponse
+
 
 router = APIRouter()
 
@@ -11,6 +13,10 @@ async def create_atributo(atributo: Atributo):
     rpta = nuevo_atributo.create_atributo(atributo)
     return rpta
 
+@router.post("/upload_atributo_masivo/")
+async def create_atributo_masivo(file: UploadFile = File(...)):
+    rpta = nuevo_atributo.create_atributo_masivo(file)
+    return rpta
 
 @router.get("/get_atributo/{atributo_id}",response_model=Atributo)
 async def get_atributo(atributo_id: int):
